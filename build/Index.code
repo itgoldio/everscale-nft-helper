@@ -1,0 +1,521 @@
+.version sol 0.58.2
+
+.pragma selector-save-my-code
+
+.macro constructor
+DROP
+GETGLOB 2
+ISNULL
+IFREF {
+	CALL $c4_to_c7_with_init_storage$
+}
+GETGLOB 6
+THROWIF 51
+OVER
+PUSHCONT {
+	LDREF
+	ENDS
+	CTOS
+}
+IF
+LDMSGADDR
+ENDS
+.loc ../contracts/Index.sol, 17
+GETGLOB 1
+PUSHREF {
+	DUP
+	SETGLOB 1
+	BLESS
+	JMPX
+}
+NEWC
+STSLICECONST x8adb35
+STREF
+STSLICE
+ENDC
+
+CALLREF {
+	CTOS
+	PUSH S0
+	PUSHSLICE x8adb35
+	SDEQ
+	PUSHREFCONT {
+		PLDREFIDX 1
+		CTOS
+		CALLREF {
+			
+			PLDREF
+			CTOS
+
+			PUSHSLICE xF4A4_
+			SDBEGINSX
+
+			LDDICT
+			NIP
+
+			LDU 10
+			NIP
+
+			PUSHSLICE xF4A1
+			SDBEGINSX
+
+			DUP
+			SREFS
+			GTINT 1
+			PUSHCONT {
+				PLDREFIDX 1
+			}
+			PUSHCONT {
+				DROP
+				NULL
+			}
+			IFELSE
+
+		}
+	}
+	PUSHREFCONT {
+		
+			PLDREF
+			CTOS
+
+			PUSHSLICE xF4A4_
+			SDBEGINSX
+
+			LDDICT
+			NIP
+
+			LDU 10
+			NIP
+
+			PUSHSLICE xF4A1
+			SDBEGINSX
+
+			DUP
+			SREFS
+			GTINT 1
+			PUSHCONT {
+				PLDREFIDX 1
+			}
+			PUSHCONT {
+				DROP
+				NULL
+			}
+			IFELSE
+
+	}
+	IFELSE
+}
+.loc ../contracts/Index.sol, 18
+PUSHREF {
+	.blob x53616c7420646f65736e277420636f6e7461696e20616e792076616c7565
+}
+OVER
+ISNULL
+NOT
+THROWARGIFNOT 102
+.loc ../contracts/Index.sol, 19
+DUP
+ISNULL
+THROWIF 63
+CTOS
+LDREF
+LDMSGADDR
+LDMSGADDR
+DROP
+BLKDROP2 1, 2
+.loc ../contracts/Index.sol, 23
+GETGLOB 9
+GETGLOB 10
+SDEQ
+THROWIFNOT 100
+.loc ../contracts/Index.sol, 24
+ACCEPT
+.loc ../contracts/Index.sol, 25
+OVER
+SETGLOB 11
+.loc ../contracts/Index.sol, 26
+SETGLOB 12
+.loc ../contracts/Index.sol, 27
+PARSEMSGADDR
+INDEX 3
+PLDU 256
+PUSHCONT {
+	.loc ../contracts/Index.sol, 28
+	DUP
+	SETGLOB 11
+	.loc ../contracts/Index.sol, 0
+}
+IFNOT
+.loc ../contracts/Index.sol, 0
+DROP
+CALLREF {
+	CALL $c7_to_c4$
+}
+THROW 0
+
+.macro getInfo
+DROP
+GETGLOB 6
+THROWIFNOT 76
+GETGLOB 2
+ISNULL
+IFREF {
+	CALL $c4_to_c7$
+}
+.loc ../contracts/Index.sol, 32
+LDU 32
+GETGLOB 4
+ROT
+SETINDEXQ 5
+SETGLOB 4
+ENDS
+.loc ../contracts/Index.sol, 0
+CALLREF {
+	CALL $getInfo_internal_macro$
+}
+PUSH S3
+PUSHCONT {
+	PUSH S5
+	CTOS
+	LDU 2
+	LDMSGADDR
+	DROP
+	NIP
+	NEWC
+	STSLICECONST xc
+	STSLICE
+	PUSHINT 1
+	STUR 98
+	REVERSE 4, 0
+	NEWC
+	STSLICECONST x965f96c1
+	STSLICE
+	ROTREV
+	NEWC
+	STSLICE
+	SWAP
+	NEWC
+	STSLICE
+	STBREFR
+	STBREFR
+	STBREFR
+	ENDC
+	PUSHINT 0
+}
+PUSHCONT {
+	GETGLOB 4
+	DUP
+	INDEX 3
+	OVER
+	THIRD
+	GETGLOB 9
+	ROLL 3
+	SECOND
+	NEWC
+	STSLICECONST x2_
+	STI 1
+	STSLICECONST x1_
+	STSLICE
+	SWAP
+	STGRAMS
+	STDICT
+	PUSHINT 1
+	STUR 106
+	REVERSE 4, 0
+	NEWC
+	GETGLOB 4
+	INDEX 5
+	STUR 32
+	STSLICE
+	ROTREV
+	NEWC
+	STSLICE
+	SWAP
+	NEWC
+	STSLICE
+	STBREFR
+	STBREFR
+	STBREFR
+	ENDC
+	GETGLOB 4
+	INDEX 4
+}
+IFELSE
+SENDRAWMSG
+IFREF {
+	CALL $upd_only_time_in_c4$
+}
+THROW 0
+
+.globl	getInfo_internal
+.type	getInfo_internal, @function
+CALL $getInfo_internal_macro$
+
+.macro getInfo_internal_macro
+.loc ../contracts/Index.sol, 37
+GETGLOB 4
+PUSHINT 0
+SETINDEXQ 2
+PUSHINT 64
+SETINDEXQ 4
+SETGLOB 4
+GETGLOB 11
+GETGLOB 12
+GETGLOB 10
+.loc ../contracts/Index.sol, 0
+
+.macro destruct
+DROP
+GETGLOB 6
+THROWIFNOT 76
+GETGLOB 2
+ISNULL
+IFREF {
+	CALL $c4_to_c7$
+}
+.loc ../contracts/Index.sol, 44
+OVER
+PUSHCONT {
+	LDREF
+	ENDS
+	CTOS
+}
+IF
+LDMSGADDR
+ENDS
+.loc ../contracts/Index.sol, 0
+CALLREF {
+	CALL $destruct_internal_macro$
+}
+DROP
+CALLREF {
+	CALL $c7_to_c4$
+}
+THROW 0
+
+.globl	destruct_internal
+.type	destruct_internal, @function
+CALL $destruct_internal_macro$
+
+.macro destruct_internal_macro
+.loc ../contracts/Index.sol, 45
+PUSHREF {
+	.blob x4d6574686f6420666f72204e4654206f6e6c79
+}
+GETGLOB 9
+GETGLOB 10
+SDEQ
+THROWARGIFNOT 101
+.loc ../contracts/Index.sol, 46
+NEWC
+STSLICECONST x42_
+STSLICE
+PUSHINT 111
+STZEROES
+ENDC
+PUSHINT 160
+SENDRAWMSG
+.loc ../contracts/Index.sol, 0
+
+.macro c4_to_c7
+PUSHROOT
+CTOS
+LDU 256 ; pubkey c4
+LDU 64 ; pubkey timestamp c4
+LDU 1 ; ctor flag
+NIP
+LDMSGADDR
+LDREF
+ENDS
+CTOS
+LDMSGADDR
+LDREF
+ENDS
+CTOS
+LDMSGADDR
+ENDS
+SETGLOB 12
+SETGLOB 11
+SETGLOB 10
+SETGLOB 3
+SETGLOB 2
+
+.macro c4_to_c7_with_init_storage
+PUSHROOT
+CTOS
+SBITS
+GTINT 1
+PUSHCONT {
+	PUSHINT 0
+	PUSHROOT
+	CTOS
+	PLDDICT ; D
+	PUSHINT 1
+	OVER
+	PUSHINT 64
+	DICTUGET
+	PUSHCONT {
+		PUSHREFSLICE {
+			.blob x8000000000000000000000000000000000000000000000000000000000000000001_
+		}
+	}
+	IFNOT
+	PUSHREFSLICE {
+		.blob x8000000000000000000000000000000000000000000000000000000000000000001_
+	}
+	DUP
+	SETGLOB 12
+	SETGLOB 11
+	SETGLOB 10
+	PUSHINT 64
+	DICTUGET
+	THROWIFNOT 61
+	PLDU 256
+	SETGLOB 2
+	PUSHINT 0 ; timestamp
+	SETGLOB 3
+}
+IFREFELSE {
+	CALL $c4_to_c7$
+}
+
+.macro c7_to_c4
+GETGLOB 12
+GETGLOB 11
+GETGLOB 10
+GETGLOB 3
+GETGLOB 2
+NEWC
+STU 256
+STU 64
+STONE
+STSLICE
+ROTREV
+NEWC
+STSLICE
+SWAP
+NEWC
+STSLICE
+STBREFR
+STBREFR
+ENDC
+POPROOT
+
+.macro upd_only_time_in_c4
+PUSHROOT
+CTOS
+LDU 256
+LDU 64
+NIP
+GETGLOB 3
+ROT
+NEWC
+STU 256
+STU 64
+STSLICE
+ENDC
+POPROOT
+
+.internal-alias :main_internal, 0
+.internal :main_internal
+PUSHROOT
+CTOS
+SBITS
+NEQINT 1
+SETGLOB 6
+PUSH S2
+CTOS
+LDU 4 ; bounced tail
+LDMSGADDR ; bounced src tail
+DROP
+SETGLOB 9
+MODPOW2 1
+GETGLOB 4
+TRUE
+SETINDEXQ 1
+PUSHINT 10000000
+SETINDEXQ 2
+NULL
+SETINDEXQ 3
+PUSHINT 0
+SETINDEXQ 4
+SETGLOB 4
+IFRET
+OVER
+SEMPTY ; isEmpty
+IFJMPREF {
+	GETGLOB 6
+	THROWIFNOT 76
+}
+OVER
+LDUQ 32  ; [funcId] body' ok
+THROWIFNOT 60
+OVER
+IFNOTJMPREF {
+	GETGLOB 6
+	THROWIFNOT 76
+}
+SWAP
+CALLREF {
+	CALL $public_function_selector$
+}
+THROW 60
+
+.internal-alias :main_external, -1
+.internal :main_external
+PUSHROOT
+CTOS
+SBITS
+NEQINT 1
+SETGLOB 6
+PUSHREFSLICE {
+	.blob x8000000000000000000000000000000000000000000000000000000000000000001_
+}
+SETGLOB 9
+OVER
+CALLREF {
+	CALL $c4_to_c7_with_init_storage$
+}
+LDU 1 ; haveSign msgSlice
+SWAP
+PUSHCONT {
+	PUSHINT 512
+	LDSLICEX ; signatureSlice msgSlice
+	DUP
+	HASHSU ; signatureSlice msgSlice hashMsgSlice
+	ROT
+	GETGLOB 2
+	CHKSIGNU ; msgSlice isSigned
+	THROWIFNOT 40
+}
+IF
+LDU 64 ; timestamp msgSlice
+SWAP
+CALL $replay_protection_macro$
+LDU 32 ; funcId body
+SWAP
+CALLREF {
+	CALL $public_function_selector$
+}
+THROW 60
+
+.macro public_function_selector
+DUP
+PUSHINT 61058519
+EQUAL
+IFJMPREF {
+	CALL $destruct$
+}
+DUP
+PUSHINT 375363265
+EQUAL
+IFJMPREF {
+	CALL $getInfo$
+}
+DUP
+PUSHINT 1196840156
+EQUAL
+IFJMPREF {
+	CALL $constructor$
+}
+
