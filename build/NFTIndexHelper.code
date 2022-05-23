@@ -1,4 +1,4 @@
-.version sol 0.58.2
+.version sol 0.58.1
 
 .macro constructor
 DROP
@@ -10,18 +10,22 @@ IFREF {
 GETGLOB 6
 THROWIF 51
 LDREF
+LDREF
 ENDS
-.loc ../contracts/NFTIndexHelper.sol, 12
+.loc ../contracts/NFTIndexHelper.sol, 16
 ACCEPT
-.loc ../contracts/NFTIndexHelper.sol, 14
+.loc ../contracts/NFTIndexHelper.sol, 18
+SWAP
 SETGLOB 10
+.loc ../contracts/NFTIndexHelper.sol, 19
+SETGLOB 11
 .loc ../contracts/NFTIndexHelper.sol, 0
 CALLREF {
 	CALL $c7_to_c4$
 }
 THROW 0
 
-.macro resolveCodeHashNftIndex
+.macro indexCode
 DROP
 GETGLOB 6
 THROWIFNOT 76
@@ -30,7 +34,12 @@ ISNULL
 IFREF {
 	CALL $c4_to_c7$
 }
-.loc ../contracts/NFTIndexHelper.sol, 17
+.loc ../contracts/NFTIndexHelper.sol, 22
+LDU 32
+GETGLOB 4
+ROT
+SETINDEXQ 5
+SETGLOB 4
 OVER
 PUSHCONT {
 	LDREF
@@ -46,7 +55,7 @@ LDMSGADDR
 ENDS
 .loc ../contracts/NFTIndexHelper.sol, 0
 CALLREF {
-	CALL $resolveCodeHashNftIndex_internal_macro$
+	CALL $indexCode_internal_macro$
 }
 OVER
 PUSHCONT {
@@ -59,39 +68,71 @@ PUSHCONT {
 	NEWC
 	STSLICECONST xc
 	STSLICE
-	PUSHINT 3586201204
+	PUSHINT 2521482273
 	STUR 130
-	STU 256
+	STREF
 	ENDC
 	PUSHINT 0
-	SENDRAWMSG
 }
 PUSHCONT {
-	DROP
+	GETGLOB 4
+	DUP
+	INDEX 3
+	OVER
+	THIRD
+	GETGLOB 9
+	ROLL 3
+	SECOND
+	NEWC
+	STSLICECONST x2_
+	STI 1
+	STSLICECONST x1_
+	STSLICE
+	SWAP
+	STGRAMS
+	STDICT
+	PUSHINT 106
+	STZEROES
+	GETGLOB 4
+	INDEX 5
+	STUR 32
+	STREF
+	ENDC
+	GETGLOB 4
+	INDEX 4
 }
 IFELSE
+SENDRAWMSG
 IFREF {
-	CALL $c7_to_c4$
+	CALL $upd_only_time_in_c4$
 }
 THROW 0
 
-.globl	resolveCodeHashNftIndex_internal
-.type	resolveCodeHashNftIndex_internal, @function
-CALL $resolveCodeHashNftIndex_internal_macro$
+.globl	indexCode_internal
+.type	indexCode_internal, @function
+CALL $indexCode_internal_macro$
 
-.macro resolveCodeHashNftIndex_internal_macro
-.loc ../contracts/NFTIndexHelper.sol, 22
+.macro indexCode_internal_macro
+.loc ../contracts/NFTIndexHelper.sol, 27
 PUSHREF {
 	.blob x6e6674
 }
 NEWC
 STREF
-.loc ../contracts/NFTIndexHelper.sol, 23
+.loc ../contracts/NFTIndexHelper.sol, 28
 XCHG S1, S2
 STSLICE
-.loc ../contracts/NFTIndexHelper.sol, 24
+.loc ../contracts/NFTIndexHelper.sol, 29
 STSLICE
-.loc ../contracts/NFTIndexHelper.sol, 25
+.loc ../contracts/NFTIndexHelper.sol, 30
+GETGLOB 4
+PUSHINT 0
+SETINDEXQ 2
+PUSHINT 64
+SETINDEXQ 4
+FALSE
+SETINDEXQ 1
+SETGLOB 4
 GETGLOB 10
 CTOS
 SWAP
@@ -201,6 +242,708 @@ CALLREF {
 	}
 	IFELSE
 }
+.loc ../contracts/NFTIndexHelper.sol, 0
+
+.macro indexCodeWithoutSalt
+DROP
+GETGLOB 6
+THROWIFNOT 76
+GETGLOB 2
+ISNULL
+IFREF {
+	CALL $c4_to_c7$
+}
+.loc ../contracts/NFTIndexHelper.sol, 33
+LDU 32
+GETGLOB 4
+ROT
+SETINDEXQ 5
+SETGLOB 4
+ENDS
+.loc ../contracts/NFTIndexHelper.sol, 0
+CALLREF {
+	CALL $indexCodeWithoutSalt_internal_macro$
+}
+OVER
+PUSHCONT {
+	PUSH S3
+	CTOS
+	LDU 2
+	LDMSGADDR
+	DROP
+	NIP
+	NEWC
+	STSLICECONST xc
+	STSLICE
+	PUSHINT 2953669019
+	STUR 130
+	STREF
+	ENDC
+	PUSHINT 0
+}
+PUSHCONT {
+	GETGLOB 4
+	DUP
+	INDEX 3
+	OVER
+	THIRD
+	GETGLOB 9
+	ROLL 3
+	SECOND
+	NEWC
+	STSLICECONST x2_
+	STI 1
+	STSLICECONST x1_
+	STSLICE
+	SWAP
+	STGRAMS
+	STDICT
+	PUSHINT 106
+	STZEROES
+	GETGLOB 4
+	INDEX 5
+	STUR 32
+	STREF
+	ENDC
+	GETGLOB 4
+	INDEX 4
+}
+IFELSE
+SENDRAWMSG
+IFREF {
+	CALL $upd_only_time_in_c4$
+}
+THROW 0
+
+.globl	indexCodeWithoutSalt_internal
+.type	indexCodeWithoutSalt_internal, @function
+CALL $indexCodeWithoutSalt_internal_macro$
+
+.macro indexCodeWithoutSalt_internal_macro
+.loc ../contracts/NFTIndexHelper.sol, 34
+GETGLOB 4
+PUSHINT 0
+SETINDEXQ 2
+PUSHINT 64
+SETINDEXQ 4
+FALSE
+SETINDEXQ 1
+SETGLOB 4
+GETGLOB 10
+.loc ../contracts/NFTIndexHelper.sol, 0
+
+.macro indexCodeHash
+DROP
+GETGLOB 6
+THROWIFNOT 76
+GETGLOB 2
+ISNULL
+IFREF {
+	CALL $c4_to_c7$
+}
+.loc ../contracts/NFTIndexHelper.sol, 37
+LDU 32
+GETGLOB 4
+ROT
+SETINDEXQ 5
+SETGLOB 4
+OVER
+PUSHCONT {
+	LDREF
+	ENDS
+	CTOS
+}
+IF
+LDMSGADDR
+LDREF
+ENDS
+CTOS
+LDMSGADDR
+ENDS
+.loc ../contracts/NFTIndexHelper.sol, 0
+CALLREF {
+	CALL $indexCodeHash_internal_macro$
+}
+OVER
+PUSHCONT {
+	PUSH S3
+	CTOS
+	LDU 2
+	LDMSGADDR
+	DROP
+	NIP
+	NEWC
+	STSLICECONST xc
+	STSLICE
+	PUSHINT 4224284567
+	STUR 130
+	STU 256
+	ENDC
+	PUSHINT 0
+}
+PUSHCONT {
+	GETGLOB 4
+	DUP
+	INDEX 3
+	OVER
+	THIRD
+	GETGLOB 9
+	ROLL 3
+	SECOND
+	NEWC
+	STSLICECONST x2_
+	STI 1
+	STSLICECONST x1_
+	STSLICE
+	SWAP
+	STGRAMS
+	STDICT
+	PUSHINT 1
+	STUR 106
+	SWAP
+	NEWC
+	GETGLOB 4
+	INDEX 5
+	STUR 32
+	STU 256
+	STBREFR
+	ENDC
+	GETGLOB 4
+	INDEX 4
+}
+IFELSE
+SENDRAWMSG
+IFREF {
+	CALL $upd_only_time_in_c4$
+}
+THROW 0
+
+.globl	indexCodeHash_internal
+.type	indexCodeHash_internal, @function
+CALL $indexCodeHash_internal_macro$
+
+.macro indexCodeHash_internal_macro
+.loc ../contracts/NFTIndexHelper.sol, 42
+PUSHREF {
+	.blob x6e6674
+}
+NEWC
+STREF
+.loc ../contracts/NFTIndexHelper.sol, 43
+XCHG S1, S2
+STSLICE
+.loc ../contracts/NFTIndexHelper.sol, 44
+STSLICE
+.loc ../contracts/NFTIndexHelper.sol, 45
+GETGLOB 10
+CTOS
+SWAP
+ENDC
+
+CALLREF {
+	PUSH S1
+	PUSHSLICE x8adb35
+	SDEQ
+	PUSHREFCONT {
+		SWAP      ; salt sliceCode
+		LDREF
+		LDREF
+		DROP         ; salt selfCallCode usualSelector
+		XCHG S1, S2  ; selfCallCode salt usualSelector
+		CTOS         ; selfCallCode salt usualSelector
+		CALLREF {
+			
+			LDREFRTOS  ; selfCallCode salt restUsualSelector intSelector
+
+			PUSHSLICE xF4A4_
+			SDBEGINSX
+			LDDICT     ; selfCallCode salt restUsualSelector dict intSelector
+			LDU 10
+			NIP
+			DUP
+			SREFS      ; selfCallCode salt restUsualSelector dict intSelector refs
+			PUSHCONT {
+				LDREF
+			}
+			PUSHCONT {
+				PUSHREF {
+				}
+				SWAP
+			}
+			IFELSE
+		                ; selfCallCode salt restUsualSelector dict version intSelector
+			PUSHSLICE xF4A1
+			SDBEGINSX
+			DROP
+			            ; selfCallCode salt restUsualSelector dict version
+			SWAP        ; selfCallCode salt restUsualSelector version dict
+			NEWC        ; selfCallCode salt restUsualSelector version dict builder
+			STSLICECONST xF4A4_ ; DICTPUSHCONST
+			STDICT
+			PUSHINT 32
+			STUR 10
+			STSLICECONST xF4A1 ; DICTUGETJMP
+			STREF       ; selfCallCode salt restUsualSelector builder
+			XCHG S1, S2 ; selfCallCode restUsualSelector salt builder
+			STREF       ; selfCallCode restUsualSelector builder
+			NEWC        ; selfCallCode restUsualSelector builder usualBuilder
+			STBREF      ; selfCallCode restUsualSelector usualBuilder
+			STSLICE     ; selfCallCode usualBuilder
+
+		}
+		NEWC        ; selfCallCode usualBuilder mainBuilder
+		STSLICECONST x8adb35
+		XCHG S1, S2 ; usualBuilder selfCallCode mainBuilder
+		STREF
+		STBREF
+		ENDC
+	}
+	PUSHREFCONT {
+		SWAP
+		CALLREF {
+			
+			LDREFRTOS  ; selfCallCode salt restUsualSelector intSelector
+
+			PUSHSLICE xF4A4_
+			SDBEGINSX
+			LDDICT     ; selfCallCode salt restUsualSelector dict intSelector
+			LDU 10
+			NIP
+			DUP
+			SREFS      ; selfCallCode salt restUsualSelector dict intSelector refs
+			PUSHCONT {
+				LDREF
+			}
+			PUSHCONT {
+				PUSHREF {
+				}
+				SWAP
+			}
+			IFELSE
+		                ; selfCallCode salt restUsualSelector dict version intSelector
+			PUSHSLICE xF4A1
+			SDBEGINSX
+			DROP
+			            ; selfCallCode salt restUsualSelector dict version
+			SWAP        ; selfCallCode salt restUsualSelector version dict
+			NEWC        ; selfCallCode salt restUsualSelector version dict builder
+			STSLICECONST xF4A4_ ; DICTPUSHCONST
+			STDICT
+			PUSHINT 32
+			STUR 10
+			STSLICECONST xF4A1 ; DICTUGETJMP
+			STREF       ; selfCallCode salt restUsualSelector builder
+			XCHG S1, S2 ; selfCallCode restUsualSelector salt builder
+			STREF       ; selfCallCode restUsualSelector builder
+			NEWC        ; selfCallCode restUsualSelector builder usualBuilder
+			STBREF      ; selfCallCode restUsualSelector usualBuilder
+			STSLICE     ; selfCallCode usualBuilder
+
+		}
+		ENDC
+	}
+	IFELSE
+}
+.loc ../contracts/NFTIndexHelper.sol, 46
+GETGLOB 4
+PUSHINT 0
+SETINDEXQ 2
+PUSHINT 64
+SETINDEXQ 4
+FALSE
+SETINDEXQ 1
+SETGLOB 4
+HASHCU
+.loc ../contracts/NFTIndexHelper.sol, 0
+
+.macro indexCodeHashWithoutSalt
+DROP
+GETGLOB 6
+THROWIFNOT 76
+GETGLOB 2
+ISNULL
+IFREF {
+	CALL $c4_to_c7$
+}
+.loc ../contracts/NFTIndexHelper.sol, 49
+LDU 32
+GETGLOB 4
+ROT
+SETINDEXQ 5
+SETGLOB 4
+ENDS
+.loc ../contracts/NFTIndexHelper.sol, 0
+CALLREF {
+	CALL $indexCodeHashWithoutSalt_internal_macro$
+}
+OVER
+PUSHCONT {
+	PUSH S3
+	CTOS
+	LDU 2
+	LDMSGADDR
+	DROP
+	NIP
+	NEWC
+	STSLICECONST xc
+	STSLICE
+	PUSHINT 3681571472
+	STUR 130
+	STU 256
+	ENDC
+	PUSHINT 0
+}
+PUSHCONT {
+	GETGLOB 4
+	DUP
+	INDEX 3
+	OVER
+	THIRD
+	GETGLOB 9
+	ROLL 3
+	SECOND
+	NEWC
+	STSLICECONST x2_
+	STI 1
+	STSLICECONST x1_
+	STSLICE
+	SWAP
+	STGRAMS
+	STDICT
+	PUSHINT 1
+	STUR 106
+	SWAP
+	NEWC
+	GETGLOB 4
+	INDEX 5
+	STUR 32
+	STU 256
+	STBREFR
+	ENDC
+	GETGLOB 4
+	INDEX 4
+}
+IFELSE
+SENDRAWMSG
+IFREF {
+	CALL $upd_only_time_in_c4$
+}
+THROW 0
+
+.globl	indexCodeHashWithoutSalt_internal
+.type	indexCodeHashWithoutSalt_internal, @function
+CALL $indexCodeHashWithoutSalt_internal_macro$
+
+.macro indexCodeHashWithoutSalt_internal_macro
+.loc ../contracts/NFTIndexHelper.sol, 50
+GETGLOB 4
+PUSHINT 0
+SETINDEXQ 2
+PUSHINT 64
+SETINDEXQ 4
+FALSE
+SETINDEXQ 1
+SETGLOB 4
+GETGLOB 10
+HASHCU
+.loc ../contracts/NFTIndexHelper.sol, 0
+
+.macro indexBasisCodeHash
+DROP
+GETGLOB 6
+THROWIFNOT 76
+GETGLOB 2
+ISNULL
+IFREF {
+	CALL $c4_to_c7$
+}
+.loc ../contracts/NFTIndexHelper.sol, 53
+LDU 32
+GETGLOB 4
+ROT
+SETINDEXQ 5
+SETGLOB 4
+ENDS
+.loc ../contracts/NFTIndexHelper.sol, 0
+CALLREF {
+	CALL $indexBasisCodeHash_internal_macro$
+}
+OVER
+PUSHCONT {
+	PUSH S3
+	CTOS
+	LDU 2
+	LDMSGADDR
+	DROP
+	NIP
+	NEWC
+	STSLICECONST xc
+	STSLICE
+	PUSHINT 3027490652
+	STUR 130
+	STU 256
+	ENDC
+	PUSHINT 0
+}
+PUSHCONT {
+	GETGLOB 4
+	DUP
+	INDEX 3
+	OVER
+	THIRD
+	GETGLOB 9
+	ROLL 3
+	SECOND
+	NEWC
+	STSLICECONST x2_
+	STI 1
+	STSLICECONST x1_
+	STSLICE
+	SWAP
+	STGRAMS
+	STDICT
+	PUSHINT 1
+	STUR 106
+	SWAP
+	NEWC
+	GETGLOB 4
+	INDEX 5
+	STUR 32
+	STU 256
+	STBREFR
+	ENDC
+	GETGLOB 4
+	INDEX 4
+}
+IFELSE
+SENDRAWMSG
+IFREF {
+	CALL $upd_only_time_in_c4$
+}
+THROW 0
+
+.globl	indexBasisCodeHash_internal
+.type	indexBasisCodeHash_internal, @function
+CALL $indexBasisCodeHash_internal_macro$
+
+.macro indexBasisCodeHash_internal_macro
+.loc ../contracts/NFTIndexHelper.sol, 56
+PUSHREF {
+	.blob x6e6674
+}
+NEWC
+STREF
+.loc ../contracts/NFTIndexHelper.sol, 57
+GETGLOB 11
+CTOS
+SWAP
+ENDC
+
+CALLREF {
+	PUSH S1
+	PUSHSLICE x8adb35
+	SDEQ
+	PUSHREFCONT {
+		SWAP      ; salt sliceCode
+		LDREF
+		LDREF
+		DROP         ; salt selfCallCode usualSelector
+		XCHG S1, S2  ; selfCallCode salt usualSelector
+		CTOS         ; selfCallCode salt usualSelector
+		CALLREF {
+			
+			LDREFRTOS  ; selfCallCode salt restUsualSelector intSelector
+
+			PUSHSLICE xF4A4_
+			SDBEGINSX
+			LDDICT     ; selfCallCode salt restUsualSelector dict intSelector
+			LDU 10
+			NIP
+			DUP
+			SREFS      ; selfCallCode salt restUsualSelector dict intSelector refs
+			PUSHCONT {
+				LDREF
+			}
+			PUSHCONT {
+				PUSHREF {
+				}
+				SWAP
+			}
+			IFELSE
+		                ; selfCallCode salt restUsualSelector dict version intSelector
+			PUSHSLICE xF4A1
+			SDBEGINSX
+			DROP
+			            ; selfCallCode salt restUsualSelector dict version
+			SWAP        ; selfCallCode salt restUsualSelector version dict
+			NEWC        ; selfCallCode salt restUsualSelector version dict builder
+			STSLICECONST xF4A4_ ; DICTPUSHCONST
+			STDICT
+			PUSHINT 32
+			STUR 10
+			STSLICECONST xF4A1 ; DICTUGETJMP
+			STREF       ; selfCallCode salt restUsualSelector builder
+			XCHG S1, S2 ; selfCallCode restUsualSelector salt builder
+			STREF       ; selfCallCode restUsualSelector builder
+			NEWC        ; selfCallCode restUsualSelector builder usualBuilder
+			STBREF      ; selfCallCode restUsualSelector usualBuilder
+			STSLICE     ; selfCallCode usualBuilder
+
+		}
+		NEWC        ; selfCallCode usualBuilder mainBuilder
+		STSLICECONST x8adb35
+		XCHG S1, S2 ; usualBuilder selfCallCode mainBuilder
+		STREF
+		STBREF
+		ENDC
+	}
+	PUSHREFCONT {
+		SWAP
+		CALLREF {
+			
+			LDREFRTOS  ; selfCallCode salt restUsualSelector intSelector
+
+			PUSHSLICE xF4A4_
+			SDBEGINSX
+			LDDICT     ; selfCallCode salt restUsualSelector dict intSelector
+			LDU 10
+			NIP
+			DUP
+			SREFS      ; selfCallCode salt restUsualSelector dict intSelector refs
+			PUSHCONT {
+				LDREF
+			}
+			PUSHCONT {
+				PUSHREF {
+				}
+				SWAP
+			}
+			IFELSE
+		                ; selfCallCode salt restUsualSelector dict version intSelector
+			PUSHSLICE xF4A1
+			SDBEGINSX
+			DROP
+			            ; selfCallCode salt restUsualSelector dict version
+			SWAP        ; selfCallCode salt restUsualSelector version dict
+			NEWC        ; selfCallCode salt restUsualSelector version dict builder
+			STSLICECONST xF4A4_ ; DICTPUSHCONST
+			STDICT
+			PUSHINT 32
+			STUR 10
+			STSLICECONST xF4A1 ; DICTUGETJMP
+			STREF       ; selfCallCode salt restUsualSelector builder
+			XCHG S1, S2 ; selfCallCode restUsualSelector salt builder
+			STREF       ; selfCallCode restUsualSelector builder
+			NEWC        ; selfCallCode restUsualSelector builder usualBuilder
+			STBREF      ; selfCallCode restUsualSelector usualBuilder
+			STSLICE     ; selfCallCode usualBuilder
+
+		}
+		ENDC
+	}
+	IFELSE
+}
+.loc ../contracts/NFTIndexHelper.sol, 58
+GETGLOB 4
+PUSHINT 0
+SETINDEXQ 2
+PUSHINT 64
+SETINDEXQ 4
+FALSE
+SETINDEXQ 1
+SETGLOB 4
+HASHCU
+.loc ../contracts/NFTIndexHelper.sol, 0
+
+.macro indexBasisCodeHashWithoutSalt
+DROP
+GETGLOB 6
+THROWIFNOT 76
+GETGLOB 2
+ISNULL
+IFREF {
+	CALL $c4_to_c7$
+}
+.loc ../contracts/NFTIndexHelper.sol, 61
+LDU 32
+GETGLOB 4
+ROT
+SETINDEXQ 5
+SETGLOB 4
+ENDS
+.loc ../contracts/NFTIndexHelper.sol, 0
+CALLREF {
+	CALL $indexBasisCodeHashWithoutSalt_internal_macro$
+}
+OVER
+PUSHCONT {
+	PUSH S3
+	CTOS
+	LDU 2
+	LDMSGADDR
+	DROP
+	NIP
+	NEWC
+	STSLICECONST xc
+	STSLICE
+	PUSHINT 3242657551
+	STUR 130
+	STU 256
+	ENDC
+	PUSHINT 0
+}
+PUSHCONT {
+	GETGLOB 4
+	DUP
+	INDEX 3
+	OVER
+	THIRD
+	GETGLOB 9
+	ROLL 3
+	SECOND
+	NEWC
+	STSLICECONST x2_
+	STI 1
+	STSLICECONST x1_
+	STSLICE
+	SWAP
+	STGRAMS
+	STDICT
+	PUSHINT 1
+	STUR 106
+	SWAP
+	NEWC
+	GETGLOB 4
+	INDEX 5
+	STUR 32
+	STU 256
+	STBREFR
+	ENDC
+	GETGLOB 4
+	INDEX 4
+}
+IFELSE
+SENDRAWMSG
+IFREF {
+	CALL $upd_only_time_in_c4$
+}
+THROW 0
+
+.globl	indexBasisCodeHashWithoutSalt_internal
+.type	indexBasisCodeHashWithoutSalt_internal, @function
+CALL $indexBasisCodeHashWithoutSalt_internal_macro$
+
+.macro indexBasisCodeHashWithoutSalt_internal_macro
+.loc ../contracts/NFTIndexHelper.sol, 62
+GETGLOB 4
+PUSHINT 0
+SETINDEXQ 2
+PUSHINT 64
+SETINDEXQ 4
+FALSE
+SETINDEXQ 1
+SETGLOB 4
+GETGLOB 11
 HASHCU
 .loc ../contracts/NFTIndexHelper.sol, 0
 
@@ -212,7 +955,9 @@ LDU 64 ; pubkey timestamp c4
 LDU 1 ; ctor flag
 NIP
 LDREF
+LDREF
 ENDS
+SETGLOB 11
 SETGLOB 10
 SETGLOB 3
 SETGLOB 2
@@ -229,6 +974,8 @@ PUSHCONT {
 	PLDDICT ; D
 	PUSHREF {
 	}
+	DUP
+	SETGLOB 11
 	SETGLOB 10
 	PUSHINT 64
 	DICTUGET
@@ -243,6 +990,7 @@ IFREFELSE {
 }
 
 .macro c7_to_c4
+GETGLOB 11
 GETGLOB 10
 GETGLOB 3
 GETGLOB 2
@@ -250,6 +998,7 @@ NEWC
 STU 256
 STU 64
 STONE
+STREF
 STREF
 ENDC
 POPROOT
@@ -278,8 +1027,21 @@ NEQINT 1
 SETGLOB 6
 PUSH S2
 CTOS
-PLDU 4
+LDU 4 ; bounced tail
+LDMSGADDR ; bounced src tail
+DROP
+SETGLOB 9
 MODPOW2 1
+GETGLOB 4
+TRUE
+SETINDEXQ 1
+PUSHINT 10000000
+SETINDEXQ 2
+NULL
+SETINDEXQ 3
+PUSHINT 0
+SETINDEXQ 4
+SETGLOB 4
 IFRET
 OVER
 SEMPTY ; isEmpty
@@ -358,15 +1120,55 @@ THROW 60
 
 .macro public_function_selector
 DUP
-PUSHINT 478865691
-EQUAL
+PUSHINT 1095173903
+LEQ
 IFJMPREF {
-	CALL $constructor$
+	DUP
+	PUSHINT 373998625
+	EQUAL
+	IFJMPREF {
+		CALL $indexCode$
+	}
+	DUP
+	PUSHINT 806185371
+	EQUAL
+	IFJMPREF {
+		CALL $indexCodeWithoutSalt$
+	}
+	DUP
+	PUSHINT 880007004
+	EQUAL
+	IFJMPREF {
+		CALL $indexBasisCodeHash$
+	}
+	DUP
+	PUSHINT 1095173903
+	EQUAL
+	IFJMPREF {
+		CALL $indexBasisCodeHashWithoutSalt$
+	}
 }
 DUP
-PUSHINT 1438717556
-EQUAL
+PUSHINT 2076800919
+LEQ
 IFJMPREF {
-	CALL $resolveCodeHashNftIndex$
+	DUP
+	PUSHINT 1244549078
+	EQUAL
+	IFJMPREF {
+		CALL $constructor$
+	}
+	DUP
+	PUSHINT 1534087824
+	EQUAL
+	IFJMPREF {
+		CALL $indexCodeHashWithoutSalt$
+	}
+	DUP
+	PUSHINT 2076800919
+	EQUAL
+	IFJMPREF {
+		CALL $indexCodeHash$
+	}
 }
 
