@@ -6,19 +6,68 @@
 		{
 			"name": "constructor",
 			"inputs": [
-				{"name":"codeIndex","type":"cell"}
+				{"name":"codeIndex","type":"cell"},
+				{"name":"codeIndexBasis","type":"cell"}
 			],
 			"outputs": [
 			]
 		},
 		{
-			"name": "resolveCodeHashNftIndex",
+			"name": "indexCode",
 			"inputs": [
+				{"name":"answerId","type":"uint32"},
 				{"name":"collection","type":"address"},
 				{"name":"owner","type":"address"}
 			],
 			"outputs": [
-				{"name":"value0","type":"uint256"}
+				{"name":"indexCode","type":"cell"}
+			]
+		},
+		{
+			"name": "indexCodeWithoutSalt",
+			"inputs": [
+				{"name":"answerId","type":"uint32"}
+			],
+			"outputs": [
+				{"name":"indexCode","type":"cell"}
+			]
+		},
+		{
+			"name": "indexCodeHash",
+			"inputs": [
+				{"name":"answerId","type":"uint32"},
+				{"name":"collection","type":"address"},
+				{"name":"owner","type":"address"}
+			],
+			"outputs": [
+				{"name":"indexCodeHash","type":"uint256"}
+			]
+		},
+		{
+			"name": "indexCodeHashWithoutSalt",
+			"inputs": [
+				{"name":"answerId","type":"uint32"}
+			],
+			"outputs": [
+				{"name":"indexCodeHash","type":"uint256"}
+			]
+		},
+		{
+			"name": "indexBasisCodeHash",
+			"inputs": [
+				{"name":"answerId","type":"uint32"}
+			],
+			"outputs": [
+				{"name":"indexBasisCodeHash","type":"uint256"}
+			]
+		},
+		{
+			"name": "indexBasisCodeHashWithoutSalt",
+			"inputs": [
+				{"name":"answerId","type":"uint32"}
+			],
+			"outputs": [
+				{"name":"indexBasisCodeHash","type":"uint256"}
 			]
 		}
 	],
@@ -30,6 +79,7 @@
 		{"name":"_pubkey","type":"uint256"},
 		{"name":"_timestamp","type":"uint64"},
 		{"name":"_constructorFlag","type":"bool"},
-		{"name":"_codeIndex","type":"cell"}
+		{"name":"_codeIndex","type":"cell"},
+		{"name":"_codeIndexBasis","type":"cell"}
 	]
 }
