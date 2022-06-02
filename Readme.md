@@ -11,6 +11,8 @@ Deployed on mainnet
 ``0:696062236a4f2b421f4df23b9dd592e3f47d5abb810d97a4611973f0f6018cd0``
 
 Deployed on devnet 
+``0:e7982fb2c60892956dd04f90e118db98ddda146c05742aa369466d2029c042e6``
+
 
 ## IndexBasis
 
