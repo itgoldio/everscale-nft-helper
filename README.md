@@ -1,9 +1,8 @@
 # NFT index helper
 
-NFTIndexHelper addresses:
+NFTIndexHelper address:
 
-Devnet: `0:e7982fb2c60892956dd04f90e118db98ddda146c05742aa369466d2029c042e6`<br>
-Mainnet: `0:696062236a4f2b421f4df23b9dd592e3f47d5abb810d97a4611973f0f6018cd0`
+`0:b5c6d8226ebf452d2dbb1e6f957347fedaa5c3ac93fd8250ee6899a660c0297b`
 
 <h2 id="search_nftRoot">Search all tip4 collections of the network</h2>
 
