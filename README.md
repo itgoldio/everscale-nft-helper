@@ -10,6 +10,7 @@ NFTIndexHelper address:
 
 * [Search all tip4 collections of the network](#search_nftRoot)
 * [Search for all NFTs by owner and collection address](#search_by_nftRoot&owner)
+* [Search for all owner's nfts (without binding to Collection address)](#search_nft_by_owner)
 * [Get all collection nft's](#getAllCollectionNfts)
 
 ***
@@ -243,8 +244,10 @@ Result: {
 
 Knowing the address of the collection contract, we can call nftCodeHash method to get the nftCodeHash:
 
+**abi.json file can be taken in the "./abi" directory**
+
 ```
-tonos-cli --url "eri01.main.everos.dev" run 0:999fa9e3331291a2fc2291a5663ef893733c838a3f4d0c5411378f4724f626d2 nftCodeHash '{"answerId": 0}' --abi Collection.abi.json
+tonos-cli --url "eri01.main.everos.dev" run 0:999fa9e3331291a2fc2291a5663ef893733c838a3f4d0c5411378f4724f626d2 nftCodeHash '{"answerId": 0}' --abi TIP4_1Collection.abi.json
 
 Result: {
   "codeHash": "0xfaddff7ca7b512e3e83c108f65f474a71c4ec175a2f66db56494dddb501325b7"

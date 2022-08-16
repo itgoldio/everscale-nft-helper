@@ -1,11 +1,23 @@
 # NFT index helper
 
-NFTIndexHelper addresses:
 
-Devnet: `0:e7982fb2c60892956dd04f90e118db98ddda146c05742aa369466d2029c042e6`<br>
-Mainnet: `0:696062236a4f2b421f4df23b9dd592e3f47d5abb810d97a4611973f0f6018cd0`
+NFTIndexHelper address:
 
-<h2 id="search_nftRoot">Search all tip4 collections of the network</h2>
+`0:b5c6d8226ebf452d2dbb1e6f957347fedaa5c3ac93fd8250ee6899a660c0297b`
+
+***
+
+## Content
+
+* [Поиск всех контрактов TIP4 Collection в сети](#search_nftRoot)
+* [Поиск всех nft по владельцу и collection адресу](#search_by_nftRoot&owner)
+* [Поиск всех nft владельца (без привязки к Collection address)](#search_nft_by_owner)
+* [Получить все NFT коллекции](#getAllCollectionNfts)
+
+
+***
+
+<h2 id="search_nftRoot">Поиск всех контрактов TIP4 Collection в сети</h2>
 
 Для поиска всех контрактов Collection используется IndexBasis. Т.к. код контрактов Collection может отличаться - просто найти все tip4 коллекции в сети невозможно. Для упрощения поиска был придуман контракт IndexBasis, выпускаемый Collection контрактом, код которого един. За счет этого мы можем найти все контракты IndexBasis, которые в свою очередь будут хранить адреса контрактов Collection.
 
@@ -228,8 +240,10 @@ Result: {
 
 Зная адрес контракта коллекции мы можем обратиться к нему для получения nftCodeHash:
 
+**abi.json файл можно взять в директории "./abi"**
+
 ```
-tonos-cli --url "eri01.main.everos.dev" run 0:999fa9e3331291a2fc2291a5663ef893733c838a3f4d0c5411378f4724f626d2 nftCodeHash '{"answerId": 0}' --abi Collection.abi.json
+tonos-cli --url "eri01.main.everos.dev" run 0:999fa9e3331291a2fc2291a5663ef893733c838a3f4d0c5411378f4724f626d2 nftCodeHash '{"answerId": 0}' --abi TIP4_1Collection.abi.json
 
 Result: {
   "codeHash": "0xfaddff7ca7b512e3e83c108f65f474a71c4ec175a2f66db56494dddb501325b7"
