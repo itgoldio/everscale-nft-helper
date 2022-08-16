@@ -223,3 +223,53 @@ Result: {
   "nft": "0:6627c74eb98d0673cdd44609f6c436e49363918724e5683aa7803e46aea71c86"
 }
 ```
+
+<h2 id="getAllCollectionNfts">Получить все NFT коллекции</h2>
+
+Зная адрес контракта коллекции мы можем обратиться к нему для получения nftCodeHash:
+
+```
+tonos-cli --url "eri01.main.everos.dev" run 0:999fa9e3331291a2fc2291a5663ef893733c838a3f4d0c5411378f4724f626d2 nftCodeHash '{"answerId": 0}' --abi Collection.abi.json
+
+Result: {
+  "codeHash": "0xfaddff7ca7b512e3e83c108f65f474a71c4ec175a2f66db56494dddb501325b7"
+}
+```
+
+**Получаем все nft контракты коллекции:**
+
+```
+query { accounts (filter : {
+    code_hash :{eq : "faddff7ca7b512e3e83c108f65f474a71c4ec175a2f66db56494dddb501325b7"}
+})
+{
+    id
+}}
+```
+
+Result:
+
+```
+{
+  "data": {
+    "accounts": [
+      {
+        "id": "0:077ffc6a036d60cac5e3befebee2f38912d4ed482104639aa6e129f463f709c3"
+      },
+      {
+        "id": "0:0aa9f70bc2e246576a9d50950a95e49ec3f66187316edadfde9188f343f5d6ce"
+      },
+      {
+        "id": "0:11a45dd24fb17b60d7714c32ff610c713bb7eba21bcc7137a2e1a15b41c10ffc"
+      },
+      {
+        "id": "0:1290192bc094a5a557982e0c4b58d243ca33e14fbcbc1fc45e896e4d4a596076"
+      },
+      ...
+      {
+        "id": "0:ef856ca29805988fae41f8081f213118503546e05b765adb03ef4aaa8f654c8f"
+      }
+    ]
+  }
+}
+```
