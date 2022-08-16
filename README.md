@@ -4,6 +4,17 @@ NFTIndexHelper address:
 
 `0:b5c6d8226ebf452d2dbb1e6f957347fedaa5c3ac93fd8250ee6899a660c0297b`
 
+***
+
+## Content
+
+* [Search all tip4 collections of the network](#search_nftRoot)
+* [Search for all NFTs by owner and collection address](#search_by_nftRoot&owner)
+* [Search for all owner's nfts (without binding to Collection address)](#search_nft_by_owner)
+* [Get all collection nft's](#getAllCollectionNfts)
+
+***
+
 <h2 id="search_nftRoot">Search all tip4 collections of the network</h2>
 
 The IndexBasis contract is used to search for all Collection contracts. Because the code of the Collection contracts may differ - it is impossible to find all tip 4 collections on the network. To simplify the search, an Index Basic contract was invented, issued by a Collection contract whose code is the one. With this, we can find all the IndexBasis contracts, which in turn will store the addresses of the Collection contracts.
@@ -78,6 +89,8 @@ Result: {
 ```
 
 As a result, we get the address of the Collection contract.
+
+***
 
 <h2 id="search_by_nftRoot&owner">Search for all NFTs by owner and collection address</h2>
 
@@ -223,5 +236,58 @@ Result: {
   "collection": "0:89fc1823620306035d6b2fb91e819649d3e7c3c894dea967c1ee7d7d6d9e365c",
   "owner": "0:5eb79f5d5aa10fa4d80067b370984c9bc686f61a7810060a46353ea2c47527bd",
   "nft": "0:6627c74eb98d0673cdd44609f6c436e49363918724e5683aa7803e46aea71c86"
+}
+```
+***
+
+<h2 id="getAllCollectionNfts">Get all collection nfts</h2>
+
+Knowing the address of the collection contract, we can call nftCodeHash method to get the nftCodeHash:
+
+**abi.json file can be taken in the "./abi" directory**
+
+```
+tonos-cli --url "eri01.main.everos.dev" run 0:999fa9e3331291a2fc2291a5663ef893733c838a3f4d0c5411378f4724f626d2 nftCodeHash '{"answerId": 0}' --abi TIP4_1Collection.abi.json
+
+Result: {
+  "codeHash": "0xfaddff7ca7b512e3e83c108f65f474a71c4ec175a2f66db56494dddb501325b7"
+}
+```
+
+**Get all the nft contracts of the collection:**
+
+```
+query { accounts (filter : {
+    code_hash :{eq : "faddff7ca7b512e3e83c108f65f474a71c4ec175a2f66db56494dddb501325b7"}
+})
+{
+    id
+}}
+```
+
+Result:
+
+```
+{
+  "data": {
+    "accounts": [
+      {
+        "id": "0:077ffc6a036d60cac5e3befebee2f38912d4ed482104639aa6e129f463f709c3"
+      },
+      {
+        "id": "0:0aa9f70bc2e246576a9d50950a95e49ec3f66187316edadfde9188f343f5d6ce"
+      },
+      {
+        "id": "0:11a45dd24fb17b60d7714c32ff610c713bb7eba21bcc7137a2e1a15b41c10ffc"
+      },
+      {
+        "id": "0:1290192bc094a5a557982e0c4b58d243ca33e14fbcbc1fc45e896e4d4a596076"
+      },
+      ...
+      {
+        "id": "0:ef856ca29805988fae41f8081f213118503546e05b765adb03ef4aaa8f654c8f"
+      }
+    ]
+  }
 }
 ```
