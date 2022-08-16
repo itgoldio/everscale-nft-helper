@@ -4,6 +4,16 @@ NFTIndexHelper address:
 
 `0:b5c6d8226ebf452d2dbb1e6f957347fedaa5c3ac93fd8250ee6899a660c0297b`
 
+***
+
+## Content
+
+* [Search all tip4 collections of the network](#search_nftRoot)
+* [Search for all NFTs by owner and collection address](#search_by_nftRoot&owner)
+* [Get all collection nft's](#getAllCollectionNfts)
+
+***
+
 <h2 id="search_nftRoot">Search all tip4 collections of the network</h2>
 
 The IndexBasis contract is used to search for all Collection contracts. Because the code of the Collection contracts may differ - it is impossible to find all tip 4 collections on the network. To simplify the search, an Index Basic contract was invented, issued by a Collection contract whose code is the one. With this, we can find all the IndexBasis contracts, which in turn will store the addresses of the Collection contracts.
@@ -78,6 +88,8 @@ Result: {
 ```
 
 As a result, we get the address of the Collection contract.
+
+***
 
 <h2 id="search_by_nftRoot&owner">Search for all NFTs by owner and collection address</h2>
 
@@ -225,6 +237,7 @@ Result: {
   "nft": "0:6627c74eb98d0673cdd44609f6c436e49363918724e5683aa7803e46aea71c86"
 }
 ```
+***
 
 <h2 id="getAllCollectionNfts">Get all collection nfts</h2>
 
